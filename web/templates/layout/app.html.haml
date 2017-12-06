@@ -1,0 +1,24 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge", "http-equiv": "X-UA-Compatible"}
+    %meta{content: 'width=device-width, initial-scale=1, shrink-to-fit=no', name: 'viewport'}
+    %meta{content: "", name: "description"}
+    %meta{content: "", name: "author"}
+    %title Hello Discuss!
+    %link{rel: "stylesheet", href: "#{static_path(@conn, "/css/app.css")}"}
+    %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"}
+
+  %body
+    %nav.light-blue
+      .nav-wrapper.container
+        %a.brand-logo{href: "/"}
+          Discussions
+    .container
+      %p.alert.alert-info{role: "alert"}= get_flash(@conn, :info)
+      %p.alert.alert-danger{role: "alert"}= get_flash(@conn, :error)
+
+      %main{role: "main"}= render @view_module, @view_template, assigns
+      
+    %script{src: "#{static_path(@conn, "/js/app.js")}"}

@@ -9,16 +9,17 @@
     %title Hello Discuss!
     %link{rel: "stylesheet", href: "#{static_path(@conn, "/css/app.css")}"}
     %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"}
+    %link{rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons"}
 
   %body
     %nav.light-blue
       .nav-wrapper.container
-        %a.brand-logo{href: "/"}
-          Discussions
+        = link "Discussions", to: topic_path(@conn, :index), class: "brand-logo"
     .container
       %p.alert.alert-info{role: "alert"}= get_flash(@conn, :info)
       %p.alert.alert-danger{role: "alert"}= get_flash(@conn, :error)
 
       %main{role: "main"}= render @view_module, @view_template, assigns
-      
+
     %script{src: "#{static_path(@conn, "/js/app.js")}"}
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"}

@@ -20,7 +20,7 @@ defmodule Discuss.Mixfile do
   def application do
     [
       mod: {Discuss, []},
-      extra_applications: [:logger]
+      extra_applications: [:logger, :ueberauth, :ueberauth_github]
     ]
   end
 
@@ -34,15 +34,17 @@ defmodule Discuss.Mixfile do
   defp deps do
     [
       {:calliope, github: "nurugger07/calliope", override: true},
+      {:cowboy, "~> 1.0"},
+      {:gettext, "~> 0.11"},
       {:phoenix, "~> 1.3.0-rc"},
-      {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_haml, github: "chrismccord/phoenix_haml"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:phoenix_pubsub, "~> 1.0"},
+      {:postgrex, ">= 0.0.0"},
+      {:ueberauth, "~> 0.4"},
+      {:ueberauth_github, "~> 0.6"}
     ]
   end
 

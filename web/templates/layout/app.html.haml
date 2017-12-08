@@ -10,6 +10,11 @@
     %link{rel: "stylesheet", href: "#{static_path(@conn, "/css/app.css")}"}
     %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"}
     %link{rel: "stylesheet", href: "https://fonts.googleapis.com/icon?family=Material+Icons"}
+    :javascript
+      if (#{@conn.assigns.user }) {
+        window.userToken = "#{Phoenix.Token.sign(Discuss.Endpoint, "key", @conn.assigns.user.id)}"
+      }
+
 
   %body
     %nav.light-blue

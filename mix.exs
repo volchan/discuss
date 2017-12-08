@@ -33,7 +33,7 @@ defmodule Discuss.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:calliope, github: "nurugger07/calliope", override: true},
+      {:calliope, "~> 0.4.2"},
       {:cowboy, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:phoenix, "~> 1.3.0-rc"},

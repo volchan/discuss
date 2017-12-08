@@ -1,8 +1,7 @@
 defmodule Discuss.Plugs.SetUser do
   import Plug.Conn
 
-  alias Discuss.Repo
-  alias Discuss.User
+  alias Discuss.{Repo, User}
 
   def init(_params), do: nil
 

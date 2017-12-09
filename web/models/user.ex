@@ -1,14 +1,18 @@
 defmodule Discuss.User do
   use Discuss.Web, :model
 
+  alias Discuss.{Topic, Comment}
+
+  @derive {Poison.Encoder, only: ~w(username avatar)a}
+
   schema "users" do
     field :email, :string
     field :provider, :string
     field :token, :string
     field :username, :string
     field :avatar, :string
-    has_many :topics, Discuss.Topic
-    has_many :comments, Discuss.Comment
+    has_many :topics, Topic
+    has_many :comments, Comment
 
     timestamps()
   end

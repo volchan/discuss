@@ -3,8 +3,8 @@ defmodule Discuss.Comment do
 
   alias Discuss.{User, Topic}
 
-  @derive {Poison.Encoder, only: ~w(content)a}
-  
+  @derive {Poison.Encoder, only: ~w(content user)a}
+
   schema "comments" do
     field :content, :string
     belongs_to :user, User

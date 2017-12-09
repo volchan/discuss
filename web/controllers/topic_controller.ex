@@ -8,11 +8,14 @@ defmodule Discuss.TopicController do
 
   def index(conn, _params) do
     topics = Repo.all(Topic)
+      |> Repo.preload(:user)
+
     render conn, "index.html", topics: topics
   end
 
   def show(conn, %{"id" => id}) do
     topic = Repo.get!(Topic, id)
+      |> Repo.preload(:user)
     render conn, "show.html", topic: topic
   end
 

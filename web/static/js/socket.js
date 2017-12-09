@@ -14,11 +14,13 @@ const createSocket = (topicId) => {
     console.log("Unable to join", resp)
   })
 
-  channel.on(`comments:${topicId}:new`, renderComent)
+  channel.on(`comments:${topicId}:new`, renderComment)
 
   document.getElementById("comment-btn").addEventListener("click", (event) => {
-    const content = document.getElementById("comment-content").value;
+    const textField = document.getElementById("comment-content");
+    const content = textField.value;
     channel.push("comment:add", {content: content})
+    textField.value = "";
   });
 };
 
@@ -30,14 +32,29 @@ const renderComments = (comments) => {
   document.getElementById("comments-container").innerHTML = renderedComments.join("");
 };
 
-const renderComent = (event) => {
+const renderComment = (event) => {
   const renderedComment = commentTemplate(event.comment);
-
   document.getElementById("comments-container").innerHTML += renderedComment;
 };
 
 const commentTemplate = (comment) => {
-  return `<li class="collection-item">${comment.content}</li>`
+  let username = 'Anonymous';
+  let avatar = 'https://cdn.kastatic.org/images/avatars/svg/orange-juice-squid.svg'
+  if (comment.user) {
+    username = comment.user.username
+    if (comment.user.avatar) {
+      avatar = comment.user.avatar
+    }
+  }
+  return `
+    <li class="collection-item">
+      ${comment.content}
+      <div class="secondary-content">
+        <img src="${avatar}" style="width: 20px; border-radius: 4px">
+        ${username}
+      </div>
+    </li>
+  `
 };
 
 window.createSocket = createSocket;

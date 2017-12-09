@@ -9,9 +9,6 @@ use Mix.Config
 config :discuss,
   ecto_repos: [Discuss.Repo]
 
-config :phoenix, :template_engines,
-  haml: PhoenixHaml.Engine
-
 # Configures the endpoint
 config :discuss, Discuss.Endpoint,
   url: [host: "localhost"],

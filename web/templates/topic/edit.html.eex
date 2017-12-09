@@ -1,0 +1,3 @@
+<h5><%= "Edit #{@old_topic.title}" %></h5>
+
+<%= render "_form.html", changeset: @changeset, action: topic_path(@conn, :update, @topic) %>

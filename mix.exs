@@ -42,7 +42,8 @@ defmodule Discuss.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:postgrex, ">= 0.0.0"},
       {:ueberauth, "~> 0.4"},
-      {:ueberauth_github, "~> 0.6"}
+      {:ueberauth_github, "~> 0.6"},
+      {:benchwarmer, "~> 0.0.2"}
     ]
   end
 

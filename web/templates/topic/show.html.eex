@@ -1,4 +1,4 @@
-<h5><%= @topic.title %></h5>
+<h5><%= @topic.title %> (<%= length(@topic.comments) %>)</h5>
 
 <div class="input-field">
   <textarea name="name" id="comment-content" class="materialize-textarea"></textarea>
